@@ -91,7 +91,7 @@ INSERT INTO PORTS(NAME_,GEOM)
 VALUES ('PIRAEUS', (SELECT GEOM FROM PIRAEUS_PORT)) --Import shape of Piraeus port from given shape file
 
 
---Q2 Are there ships that have emitted signals but we don't have static information about them?
+--Q2 Are there ships that have emitted signals but there are not in the vessels table?
 
 SELECT DISTINCT VESSEL_ID
 FROM POSITIONS
@@ -100,7 +100,7 @@ WHERE VESSEL_ID NOT IN(
 	FROM VESSELS
 )
 
---Q3 What is the nearest and farthest position that our antenna has recorded?
+--Q3 What is the nearest and farthest position that the antenna has recorded?
 
 SELECT * FROM (SELECT POSITIONS.GEOM,ST_DISTANCE(POSITIONS.GEOM::GEOGRAPHY, AIS.GEOM::GEOGRAPHY) AS APOSTASI
 FROM POSITIONS, AIS) ALIAS
@@ -234,7 +234,7 @@ ON DELETED.ID_=POS.ID_
 WHERE DELETED.ID_ IS NULL
 ORDER BY VESSEL_ID, DT ASC
 
---Q11 We will tackle the challenge of segmenting the sequence of blips emitted by a ship. That is, to identify routes from port to port with the corresponding departure and arrival times.
+--Q11 We will tackle the challenge of segmenting the sequence of signals emitted by a ship. That is, to identify routes from port to port with the corresponding departure and arrival times.
 
 --q11.ipynb
 
