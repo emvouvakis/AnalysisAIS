@@ -164,8 +164,10 @@ WHERE POSIBLES.MESA=TRUE
 --q6.ipynb
 
 --Q7_8
---For a specific passenger ship (which will be selected from the Vessels table) and a specific day (29/4/2019) for which we have previously ascertained that the ship gave signals, how many signals have been recorded? What is the minimum, average, and maximum time difference between two consecutive time points?
---Based on the consecutive positions, what is the maximum speed that particular ship developed on that day? Given the point geometry we have for ports, which of the ports was it close to (distance < 0.3 Nautical miles)?
+--For a specific passenger ship (from the Vessels table) and a specific day (29/4/2019) for which we have previously ascertained that the ship sent signals, how many signals have been recorded?
+--What is the minimum, average, and maximum time difference between two consecutive signals?
+--Based on the consecutive positions, what is the maximum speed that particular ship developed on that day?
+--Given the geometry we have for ports, which of the ports was it close to (distance < 0.3 Nautical miles)?
 
 CREATE TABLE SHIP557 AS (SELECT POSITIONS.* FROM
 	(SELECT ID_ AS ID1_ FROM (
@@ -179,7 +181,7 @@ WHERE DT>='2019-04-01' AND DT<'2019-04-02')
 
 --q7_8.ipynb
 
---Q9 Are there signals related to the same ship and at the same time or even less than 5 seconds apart? If we found such record pairs, keep only one record and delete the other.
+--Q9 Are there signals related to the same ship and at the same time or even less than 5 seconds apart? Keep only one record and delete the other.
 
 SELECT POS.* 
 FROM POSITIONS POS
@@ -192,7 +194,7 @@ ON DELETED.ID_=POS.ID_
 WHERE DELETED.ID_ IS NULL
 ORDER BY VESSEL_ID, DT ASC
 
---Q10 Are there signals (Positions table) that indicate a speed greater than the maximum acceptable for the specific type of ship? If so, remove the entries that indicate a speed greater than the maximum acceptable for that type of ship.
+--Q10 Are there signals (Positions table) that indicate a speed greater than the maximum acceptable for the specific type of ship? If so, remove them.
 
 ALTER TABLE VESSELTYPES
 ADD COLUMN MAX_SPEED DOUBLE PRECISION
