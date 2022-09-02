@@ -1,5 +1,5 @@
---Data otained from: https://zenodo.org/record/6323416#.YnDqkC8RrAA
---Sample Data: https://drive.google.com/uc?export=download&id=1tGImE1WHTxCfi6NLJM4OSqalY8Dr-u63
+--Data can be obtained from: https://zenodo.org/record/6323416#.YnDqkC8RrAA
+--Sample Data used: https://drive.google.com/uc?export=download&id=1tGImE1WHTxCfi6NLJM4OSqalY8Dr-u63
 
 --Q1 Creation of Database
 
