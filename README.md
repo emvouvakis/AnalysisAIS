@@ -1,4 +1,4 @@
-## AIS-Analysis
+## AnalysisAis
 This analysis constists of different questions answered with Queries in Postgres or in Python using Geopandas and Movingpandas.
 
 >Visualizations made with the help of Qgis and Geopandas.
